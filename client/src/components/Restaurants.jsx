@@ -5,14 +5,14 @@ import {useNavigate} from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import '../components.css'
 
-const Restaurants = () => {
+
+const Restaurants = ({user,setUser}) => {
     const [restaurants, setRestaurants] = useState([])
 
 
     const navigate = useNavigate() 
     
-    const {id} = useParams();
-
+    console.log("user:",user)
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/restaurants')
@@ -24,15 +24,32 @@ const Restaurants = () => {
       const logHanlder = (e) => {
         navigate('/')
     }
+
+    const handleLogout = (e) => {
+      e.preventDefault();
+      console.log("attempting to logout");
+      axios
+          .post('http://localhost:8000/api/users/logout', { } , { withCredentials: true })
+          .then(res => {
+              navigate('/restaurants')
+              setUser(null);
+              console.log("successful logout")
+          })
+          .catch(err => console.log("logout error: " + err));}
     
     const navigateOneRestaurant = (id) => {
       navigate(`/restaurants/${id}`)
     }
 
     const navigateCreateRestaurant = (e) => {
-    navigate('/restaurants/create')
-}
-  
+      if (!user) {
+        navigate('/')
+      }else {
+        navigate('/restaurants/create')
+
+      }
+    }
+    
   return (
     <div>
       <nav className="navbar navbar-main navbar-expand-lg bg-body-tertiary justify-content-evenly ">
@@ -41,7 +58,7 @@ const Restaurants = () => {
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn btn-danger" type="submit">Search</button>
         </form>
-        <button class="btn btn-primary" type="submit" onClick={logHanlder}>Login</button>
+        <button class="btn btn-primary" type="submit" onClick={(!user) ? logHanlder : handleLogout }>  {(!user) ? "Login" : "Logout"}</button>
         
       </nav>
       <div className='add-res'>

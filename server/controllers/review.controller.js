@@ -31,7 +31,7 @@ module.exports.findOneReview = (req, res) => {
 module.exports.createReview = (req, res) => {
     console.log(req.cookies.usertoken)
     const user = jwt.verify(req.cookies.usertoken, secret);
-    Review.create({ ...req.body, creator: user._id })
+    Review.create({ ...req.body, user: user._id })
     .then((newReview) => {
         Restaurant.findByIdAndUpdate(newReview.restaurant, {$push: {reviews: newReview._id}})
             .then(() => console.log("Successfully added a new review to Restaurant"))

@@ -21,9 +21,9 @@ const RestaurantForm = () => {
         }
     const submitHandler = (e) => {
         e.preventDefault()
-            axios.post('http://localhost:8000/api/restaurants', restaurant)
+            axios.post('http://localhost:8000/api/restaurants', restaurant, {withCredentials: true})
             .then(res => {console.log(res)
-                navigate('/dashboard')})
+                navigate('/restaurants')})
             .catch(err => console.log(err))
         
     } 

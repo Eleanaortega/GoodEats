@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Reviews from './Reviews'
 
-const OneRestaurant = () => {
+const OneRestaurant = ({user}) => {
 
     const {id} = useParams();
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ const OneRestaurant = () => {
                 <p>Price:{oneRestaurant.price}</p>
                 <p>Address: {oneRestaurant.address}</p>
             </div>
-            <Reviews oneRestaurant={oneRestaurant}/>
+            <Reviews oneRestaurant={oneRestaurant} user={user}/>
         </div>
     </div>
   )

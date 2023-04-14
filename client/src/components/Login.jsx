@@ -4,25 +4,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const LoginForm = () => {
-    const navigate = useNavigate();
-    const [userInfo, setUserInfo] = useState({
-        email: "",
-        password: ""
-    })
+const LoginForm = ({setUser}) => {
+    
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const changeHandler = (e) => {
-        setUserInfo({
-            ...userInfo,
-            [e.target.name]: e.target.value
-        })
-    }
+    const navigate = useNavigate();
+    
+
+    // const changeHandler = (e) => {
+    //     setUserInfo({
+    //         ...userInfo,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
     
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/users/login', userInfo, {withCredentials: true})
+        axios.post('http://localhost:8000/api/users/login', { email, password}, {withCredentials: true})
             .then(res => {
-                console.log(res)
+                console.log('user', res.data.user);
+                setUser(res.data.user)
                 navigate('/restaurants')
             })
             .catch(err => console.log(err))
@@ -35,11 +37,11 @@ const LoginForm = () => {
             <h3 className="text-center text-white">Login</h3>
             <div className="form-group">
                 <label className="form-label text-white">Email:</label>
-                <input type="email" className="form-control" name="email" value={userInfo.email} onChange={changeHandler}/>
+                <input type="email" className="form-control" name="email" onChange={ e => setEmail(e.target.value)}/>
             </div>
             <div className="form-group p-1">
                 <label className="form-label text-white">Password:</label>
-                <input type="password" className="form-control" name="password" value={userInfo.password} onChange={changeHandler}/>
+                <input type="password" className="form-control" name="password"  onChange={ e => setPassword(e.target.value) }/>
             </div>
             <div className="form-group p-1">
                 <button type="submit" className="btn btn-primary mt-3">Login</button>

@@ -6,15 +6,17 @@ import { useParams } from 'react-router-dom'
 
 
 
-const Reviews = ({oneRestaurant}) => {
+const Reviews = ({oneRestaurant, user}) => {
     
     const navigate = useNavigate() 
     const {id} = useParams();
     const [reviews, setReviews] = useState([])
 
+    console.log("user:",user)
+
     useEffect(() => {
       axios.get(`http://localhost:8000/api/reviews/${id}`)
-      .then(res => setReviews(res.data))
+      .then(res => {setReviews(res.data); console.log("Res Data:", res.data)})
       .catch(err => console.log(err))
   }, [])
 
@@ -22,7 +24,12 @@ const Reviews = ({oneRestaurant}) => {
       console.log("reviews:",oneRestaurant.reviews)
 
       const naviateCreateReview = () => {
-        navigate(`/reviews/create/${id}`)
+        if (!user) {
+          navigate('/')
+        }else {
+          navigate(`/reviews/create/${id}`)
+  
+        }
     }
 
   return (
@@ -33,7 +40,7 @@ const Reviews = ({oneRestaurant}) => {
                   <div>
                       <p>{review.description}</p>
                       <p>{review.rating}</p>
-                      <p>{review.user.firstName}</p>
+                      <p>{review.user?.firstName}</p>
                   </div>
                 </div>
               )

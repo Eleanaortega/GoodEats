@@ -6,18 +6,23 @@ import RestaurantForm from './components/RestaurantForm';
 import Restaurants from './components/Restaurants';
 import Reviews from './components/Reviews';
 // import Login from './components/Login'
+import { useState } from 'react';
 
 function App() {
+
+  const [user, setUser] = useState({})
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<RegLogForm/>} />
+        <Route path="/" element={<RegLogForm setUser={setUser}/>}/>
         {/* <Route path="*" element={<NotFound/>} /> */}
-        <Route path="/restaurants" element={<Restaurants/>} />
-        <Route path="/restaurants" element={<Restaurants/>} />
-        <Route path="/restaurants/:id" element={<OneRestaurant/>} />
-        <Route path="/restaurants/create" element={<RestaurantForm/>} />
-        <Route path="/reviews/create/:id" element={<CreateReview/>} />
+        {/* <Route path="/restaurants" element={<Restaurants user={user}/> } /> */}
+        {/* <Route path="/restaurants" element={<Restaurants user={user}/>} /> */}
+        <Route path="/restaurants/" element={<Restaurants setUser={setUser} user={user} />} />
+        <Route path="/restaurants/:id" element={<OneRestaurant user={user} />} />
+        <Route path="/restaurants/create" element={<RestaurantForm  user={user}/>}/>
+        <Route path="/reviews/create/:id" element={<CreateReview  user={user}/>} />
      </Routes>
     </div>
   );
