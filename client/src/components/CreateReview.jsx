@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
+import {Stack, Rating} from "@mui/material"
 
 
 const CreateReview = () => {
@@ -34,20 +35,23 @@ const CreateReview = () => {
             .catch(err => console.log(err))
     }
 
+    
+
   return (
-    <div className="col-md-4 mx-auto">
-        <form onSubmit={submitHandler}>
-            <h3 className="text-center">New Review</h3>
-            <div className="form-group">
-                <textarea rows="4" cols="50" maxlength="200" className="form-control" name="description" value={review.description}  placeholder={"Share your experience!"}
-                onChange={changeHandler}/>
-            </div>
-            <div className="form-group">
-                <label className="form-label">Rating:</label>
-                <input type="number" className="form-control" name="rating" value={review.rating} onChange={changeHandler} placeholder={"Out of 5"} />
-            </div>
-            <button type="submit" className="btn btn-primary mt-3">Register</button>
-        </form>
+    <div className='review-background'>
+        <div className=" mx-auto review-create">
+            <form className='review-form' onSubmit={submitHandler}>
+                <h3 className="text-center">NEW REVIEW</h3>
+                <div className="form-group">
+                    <textarea rows="4" cols="50" maxlength="200" className="form-control" name="description" value={review.description}  placeholder={"Share your experience!"}
+                    onChange={changeHandler}/>
+                </div>
+                <Stack spacing={2}>
+                    <Rating value={review.rating} name="rating" onChange={changeHandler} size="large"/>
+                    <button type="submit" className="btn btn-primary mt-3">Add</button>
+                </Stack>
+            </form>
+        </div>
     </div>
   )
 }

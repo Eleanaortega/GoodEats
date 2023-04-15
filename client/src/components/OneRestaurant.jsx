@@ -22,17 +22,19 @@ const OneRestaurant = ({user}) => {
   return (
     <div>
         <div>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-evenly">
+            <nav class="navbar one-res-nav navbar-expand-lg justify-content-evenly">
                 <h1>Good Eats</h1>
-            <button class="btn btn-primary" type="submit">Logout</button>
+                <button class="btn btn-primary" type="submit">Logout</button>
             </nav>
         </div>
         <div className='one-restaurant'>
             <div className='one-restaurant-details'>
-                <img src={oneRestaurant.img}  width="400" height='400'/>
-                <h2>{oneRestaurant.title}</h2>
-                <p>Price:{oneRestaurant.price}</p>
-                <p>Address: {oneRestaurant.address}</p>
+                <img  className='one-res-img' src={oneRestaurant.img}  width="400" height='400'/>
+                <div className='one-restaurant-detail-1'>
+                    <h2 className='one-res-title'>{oneRestaurant.title}</h2>
+                    <p className='one-res-price'>{oneRestaurant.price}</p>
+                    <p className='one-res-address'>Address: {oneRestaurant.address}</p>
+                </div>
             </div>
             <Reviews oneRestaurant={oneRestaurant} user={user}/>
         </div>

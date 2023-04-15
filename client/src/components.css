@@ -41,7 +41,7 @@
 .log-reg-container {
     background: url('./imgs/charlesdeluvio-D-vDQMTfAAU-unsplash.jpg');
     background-size: 100%;
-    height: 820px;
+    height: 910px;
 }
 
 .title-log {
@@ -51,18 +51,30 @@
     font-size: 100px;
 }
 .one-restaurant {
-    background: rgb(252, 252, 252);
+    background: #212529;
+    color: white;
+    background-size: 100%;
+    height: 850px;
+    display: flex;
+    gap: 300px;
+    padding-top: 10px;
+    padding-left: 150px;    
+    /* background: rgb(252, 252, 252);
     background-size: 100%;
     height: 760px;
     display: flex;
-    justify-content: space-between;
-    padding-top: 50px;
-    padding-left: 150px;
+    gap: 200px;
+    padding-top: 25px;
+    padding-left: 150px;     */
 
 }
 .one-restaurant-details {
     display: flex;
     flex-direction: column;
+    gap: 25px;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
 }
 .add-res {
     display: flex;
@@ -74,4 +86,91 @@
     height: 50px;
     width: 50px;
     border-radius:50%;
+}
+
+.one-res-img {
+    border-radius: 50px;
+    box-shadow: 0px 4px 8px;
+}
+
+.one-res-title {
+    font-family:'pakades';
+    font-weight: bolder;
+    text-transform: capitalize;
+    font-size: 40px;
+}
+
+.one-res-address {
+    word-wrap: break-word;
+    text-transform: capitalize;
+    width: 350px;
+    font-weight: 700;
+}
+
+.one-res-price {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+.Reviews {
+    display: flex;
+    flex-direction: column;
+    background-color:whitesmoke;
+    border-radius: 25px;
+    color: black;
+    width: 550px;
+    height: 400px;
+    margin-top: 130px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.review-single{
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    box-shadow: 0px 1px 3px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.review-user {
+    display: flex;
+    align-items: baseline;
+    gap:30px;
+}
+
+.review-user-name {
+    font-family: 'Mont';
+    font-weight:100;
+
+}
+
+.one-res-nav {
+    background: url('./imgs/stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg') fixed;
+    color: white;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 600px;
+}
+
+.review-background {    
+    background: url('./imgs/big-dodzy-saw2ahar17s-unsplash.jpg') no-repeat center center fixed;
+    background-size: 100%;
+    height: 915px;
+    padding-top: 60px;
+}
+
+.review-create {
+    background: #ffffff8a;
+    height: 400px;
+    width: 650px;
+    padding-top: 65px;
+    box-shadow: 0px 5px 20px;
+    border-radius: 5%;
+    
+}
+
+.review-form {
+    margin: 10px;
 }
