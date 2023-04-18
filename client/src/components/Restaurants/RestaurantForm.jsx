@@ -29,17 +29,9 @@ const RestaurantForm = () => {
     } 
 
   return (
-    <div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-evenly">
-            <h1>Good Eats</h1>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
-        </nav>
-        <div className='col md-6 offset-2 mx-auto'>
-            <h2>Add a New Restaurant</h2>
-            <form  className="" onSubmit={submitHandler}>
+        <div className='res-create-page'>
+            <h2 >ADD NEW RESTAURANT</h2>
+            <form  className="res-form" onSubmit={submitHandler}>
                 <div className='form-group'>
                     <label htmlFor='title'>Title:</label>
                     <input type='text' className='form-control' name='title' onChange={onChangeHandler}/>
@@ -80,7 +72,6 @@ const RestaurantForm = () => {
                 <button className='btn btn-primary'>Add Restaurant</button>
             </form>
         </div>
-    </div>
   )
 }
 

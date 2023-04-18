@@ -17,14 +17,16 @@ const OneRestaurant = ({user}) => {
         .catch(err => console.log(err))
     }, [])
 
-    
+    const navigateToHome = (e) => {
+        navigate('/restaurants')
+    }
 
   return (
     <div>
         <div>
             <nav class="navbar one-res-nav navbar-expand-lg justify-content-evenly">
                 <h1>Good Eats</h1>
-                <button class="btn btn-primary" type="submit">Logout</button>
+                <button class="btn btn-primary" type="submit" onClick={navigateToHome}>Home</button>
             </nav>
         </div>
         <div className='one-restaurant'>

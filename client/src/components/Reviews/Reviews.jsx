@@ -27,13 +27,22 @@ const Reviews = ({oneRestaurant, user}) => {
       console.log("reviews:",oneRestaurant.reviews)
 
       const naviateCreateReview = () => {
-        if (!user) {
-          navigate('/')
-        }else {
+        if (user?.firstName) {
           navigate(`/reviews/create/${id}`)
+        }else {
+          navigate(`/`)
   
         }
-    }
+      }
+
+      const deleteReview = (id) => {
+        axios.delete(`http://localhost:8000/api/reviews/${id}`, {withCredentials: true})
+            .then(res => {
+              const filteredReviews = reviews.filter(review => review._id !==id)
+              setReviews(filteredReviews)
+            })
+            .catch(err => console.log(err))
+    } 
 
   return (
     <div>
@@ -45,7 +54,8 @@ const Reviews = ({oneRestaurant, user}) => {
                       <p className='review-user-name'>{review.user?.firstName} </p>
                       <Rating name="read-only" value={review.rating} readOnly />     
                       <p><Link to={`/reviews/edit/${review._id}`}> {(review.user?.firstName === user.firstName) ? "Edit" : ""}</Link></p>   
-                      <p> {(review.user?.firstName === user.firstName) ? "Delete" : ""}</p>   
+                      <button  className='btn' onClick={()=>deleteReview(review._id)}>  {(review.user?.firstName === user.firstName) ? "Delete" : ""}</button>   
+                      {/* <button onClick={deletePlayer}>Delete</button> */}
                     </div>
                     <p>{review.description}</p>
                   </div>

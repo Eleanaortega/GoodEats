@@ -63,9 +63,9 @@ module.exports.updateReview = (req, res) => {
 }
 
 module.exports.deleteReview = (req, res) => {
-    Review.findByIdAndDelete(req.params.id)
+    Review.findByIdAndDelete({_id : req.params.id})
     .then((deletedReview) => {
-        res.json({Review : deletedReview})
+        res.json(deletedReview)
     })
     .catch((err) => res.status(400).json({message: 'Something went wrong', error: err}))
 }

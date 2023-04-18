@@ -10,6 +10,10 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+.card:hover {
+    transform: translateY(-15px) translateX(-10px);
+}
+
 .card-title {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
@@ -138,7 +142,7 @@
 }
 
 .one-res-nav {
-    background: url('./imgs/stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg') fixed;
+    background: url('./imgs/stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg') ;
     color: white;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
@@ -165,4 +169,32 @@
 
 .review-form {
     margin: 10px;
+} 
+
+.res-create-page {
+    background: url('./imgs/jason-leung-poI7DelFiVA-unsplash.jpg')no-repeat center center fixed;
+    background-size: 100%;
+    color: white;
+    height: 912px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    font-weight:bold;
+    gap: 20px;
+    
+}
+
+.res-form {
+    padding: 10px;
+    gap: 5px;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    width: 450px;
+    height: 500px;
+    background-color: #121d29e0;
+    border-radius: 30px;
+    box-shadow: 0px 5px 20px;
+
 }
