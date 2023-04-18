@@ -23,7 +23,7 @@ const Reviews = ({oneRestaurant, user}) => {
       .catch(err => console.log(err))
   }, [])
 
-    console.log("OneRestaurant:", oneRestaurant)
+      console.log("OneRestaurant:", oneRestaurant)
       console.log("reviews:",oneRestaurant.reviews)
 
       const naviateCreateReview = () => {
@@ -43,7 +43,9 @@ const Reviews = ({oneRestaurant, user}) => {
                   <div className='review-single'>
                     <div className='review-user'>
                       <p className='review-user-name'>{review.user?.firstName} </p>
-                      <Rating name="read-only" value={review.rating} readOnly />                    
+                      <Rating name="read-only" value={review.rating} readOnly />     
+                      <p><Link to={`/reviews/edit/${review._id}`}> {(review.user?.firstName === user.firstName) ? "Edit" : ""}</Link></p>   
+                      <p> {(review.user?.firstName === user.firstName) ? "Delete" : ""}</p>   
                     </div>
                     <p>{review.description}</p>
                   </div>

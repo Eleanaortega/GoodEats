@@ -14,7 +14,17 @@ module.exports.findAllReviews = (req, res) => {
             res.json({Reviews: allReviews})
         })
         .catch((err) => res.json({message: 'Something Went Wrong', error: err}));
+    }
+    
+module.exports.findOne = (req, res) => {
+    console.log(req.params)
+    Review.findById(req.params.id)
+    .then((oneReview) => {
+        res.json(oneReview)
+    })
+    .catch((err) => res.json({message: 'Something went wrong', error: err}))
 }
+
 
 module.exports.findOneReview = (req, res) => {
     console.log("Getting Restaurant:", req.params.id)
@@ -45,17 +55,17 @@ module.exports.createReview = (req, res) => {
 }
 
 module.exports.updateReview = (req, res) => {
-    Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+    Review.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
     .then((updateReview) => {
-        res.json({Review : updateReview})
+        res.json(updateReview)
     })
-    .catch((err) => res.json({message: 'Something went wrong', error: err}))
+    .catch((err) => res.status(400).json({message: 'Something went wrong', error: err}))
 }
 
 module.exports.deleteReview = (req, res) => {
-    Restaurant.findByIdAndDelete(req.params.id)
+    Review.findByIdAndDelete(req.params.id)
     .then((deletedReview) => {
         res.json({Review : deletedReview})
     })
-    .catch((err) => res.json({message: 'Something went wrong', error: err}))
+    .catch((err) => res.status(400).json({message: 'Something went wrong', error: err}))
 }

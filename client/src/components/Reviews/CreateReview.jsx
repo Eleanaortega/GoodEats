@@ -29,8 +29,8 @@ const CreateReview = () => {
         e.preventDefault();
         axios.post(`http://localhost:8000/api/reviews/${id}`, review, {withCredentials: true})
             .then(res => {
-                console.log(res)
-                navigate('/restaurants')
+                console.log("new review:", res)
+                navigate(`/restaurants/${id}`)
             })
             .catch(err => console.log(err))
     }

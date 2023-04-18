@@ -1,11 +1,10 @@
 import {Routes, Route} from 'react-router-dom';
-import CreateReview from './components/CreateReview';
-import OneRestaurant from './components/OneRestaurant';
-import RegLogForm from './components/RegLogForm'
-import RestaurantForm from './components/RestaurantForm';
-import Restaurants from './components/Restaurants';
-import Reviews from './components/Reviews';
-// import Login from './components/Login'
+import CreateReview from './components/Reviews/CreateReview'
+import OneRestaurant from './components/Reviews/OneRestaurant';
+import RegLogForm from './components/LogReg/RegLogForm'
+import RestaurantForm from './components/Restaurants/RestaurantForm';
+import Restaurants from './components/Restaurants/Restaurants';
+import EditReview from './components/Reviews/EditReview'
 import { useState } from 'react';
 
 function App() {
@@ -23,6 +22,7 @@ function App() {
         <Route path="/restaurants/:id" element={<OneRestaurant user={user} />} />
         <Route path="/restaurants/create" element={<RestaurantForm  user={user}/>}/>
         <Route path="/reviews/create/:id" element={<CreateReview  user={user}/>} />
+        <Route path="/reviews/edit/:id" element={<EditReview  user={user}/>} />
      </Routes>
     </div>
   );

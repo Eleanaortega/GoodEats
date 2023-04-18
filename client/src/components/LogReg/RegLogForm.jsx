@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import Register from './Register';
-import '../components.css'
+import '/Users/eleanaortega/Desktop/Mern/Good Eats/client/src/components.css';
 import { useState } from 'react';
 
 const RegLogForm = ({setUser}) => {

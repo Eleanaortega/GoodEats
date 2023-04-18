@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
-import '../components.css'
+import '/Users/eleanaortega/Desktop/Mern/Good Eats/client/src/components.css';
 
 
 const Restaurants = ({user,setUser}) => {
@@ -58,7 +58,7 @@ const Restaurants = ({user,setUser}) => {
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn btn-danger" type="submit">Search</button>
         </form>
-        <button class="btn btn-primary" type="submit" onClick={(!user) ? logHanlder : handleLogout }>  {(!user) ? "Login" : "Logout"}</button>
+        <button class="btn btn-primary" type="submit" onClick={(user?.firstName) ? handleLogout : logHanlder }>  {(user?.firstName) ? "Logout" : "Login"}</button>
         
       </nav>
       <div className='add-res'>
